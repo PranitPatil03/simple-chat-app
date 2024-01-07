@@ -1,20 +1,13 @@
-const http = require("http");
 const express = require("express");
+
+const path = require("path");
+
 const app = express();
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
 
-io.on("connection", (socket) => {
-    socket.on('chat message', (msg) => {
-        io.emit("messages",msg)
-    });
-});
+const PORT = 3000;
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
-server.listen(8080, () => {
-  console.log("app is running on port 8080 ");
-});
+app.use(express.static(path.join(__dirname, "public")));
 
+app.listen(PORT, () => {
+  console.log(`Server Running on Port ${PORT}`);
+});
