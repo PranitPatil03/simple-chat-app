@@ -1,4 +1,4 @@
-const socket = io('https://simple-chat-app-psi-six.vercel.app/');
+const socket = io();
 
 let nameInput = document.getElementById("name-input");
 let clientTotal = document.getElementById("client-total");
